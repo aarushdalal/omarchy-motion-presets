@@ -1,0 +1,228 @@
+#!/usr/bin/env bash
+# omarchy-animation-style: Switch and manage Hyprland and Quickshell animation presets for Omarchy
+# Part of the Omarchy Signature Motion Engine
+
+set -euo pipefail
+
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/hypr"
+ANIM_DIR="$CONFIG_DIR/animations"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/omarchy"
+STATE_FILE="$STATE_DIR/animation-style"
+INTENSITY_FILE="$STATE_DIR/animation-intensity"
+REDUCED_MOTION_FILE="$STATE_DIR/reduced-motion"
+TARGET_FILE="$CONFIG_DIR/animations.lua"
+
+mkdir -p "$ANIM_DIR" "$STATE_DIR"
+
+get_current() {
+  if [[ -f "$STATE_FILE" ]]; then
+    cat "$STATE_FILE"
+  else
+    echo "tokyo"
+  fi
+}
+
+get_intensity() {
+  if [[ -f "$INTENSITY_FILE" ]]; then
+    cat "$INTENSITY_FILE"
+  else
+    echo "balanced"
+  fi
+}
+
+get_reduced_motion() {
+  if [[ -f "$REDUCED_MOTION_FILE" ]]; then
+    cat "$REDUCED_MOTION_FILE"
+  else
+    echo "false"
+  fi
+}
+
+human_name() {
+  case "$1" in
+    # Signatures
+    unfold)     echo "Material Unfold (Signature Surface Reveal)" ;;
+    liquid)     echo "Liquid Selection (Signature Morphing Tension)" ;;
+    snap)       echo "Spatial Snap (Signature Directional Anchor)" ;;
+    bloom)      echo "Context Bloom (Signature Layered Growth)" ;;
+    ignition)   echo "Command Ignition (Signature Kinetic Energy)" ;;
+    morph)      echo "Theme Morph (Signature Cinematic Transition)" ;;
+    orbit)      echo "Orbit Reveal (Secondary Radial Float)" ;;
+    parallax)   echo "Workspace Parallax (Multi-Depth Perspective)" ;;
+
+    # Classic & High-Physics Presets
+    quantum)    echo "Quantum Snap (Ultra-Fast & Magnetic)" ;;
+    cosmic)     echo "Cosmic Glide (Apple Spring & Silk)" ;;
+    tokyo)      echo "Tokyo Drift (Kinetic Velocity)" ;;
+    ghost)      echo "Velocity Ghost (Hyperspeed Hologram)" ;;
+    snappy)     echo "Fast & Snappy 144Hz" ;;
+    cyberpunk)  echo "Cyberpunk Warp 3D" ;;
+    fluid)      echo "Fluid Glass & Silk" ;;
+    comic)      echo "Comic Flip & Gravity" ;;
+    jelly)      echo "Bouncy Jelly & Arcade" ;;
+    matrix)     echo "Matrix Digital Elevator" ;;
+    default)    echo "Classic Default" ;;
+    *)          echo "$1" ;;
+  esac
+}
+
+cmd="${1:-current}"
+
+case "$cmd" in
+  get)
+    if [[ $# -lt 2 ]]; then
+      get_current
+    else
+      target="${2:-}"
+      current="$(get_current)"
+      if [[ "$current" == "$target" ]]; then
+        exit 0
+      else
+        exit 1
+      fi
+    fi
+    ;;
+
+  current)
+    get_current
+    ;;
+
+  list)
+    for f in "$ANIM_DIR"/*.lua; do
+      if [[ -f "$f" ]]; then
+        b="$(basename "$f" .lua)"
+        echo "$b - $(human_name "$b")"
+      fi
+    done
+    ;;
+
+  set)
+    name="${2:-tokyo}"
+    source_file="$ANIM_DIR/$name.lua"
+
+    if [[ ! -f "$source_file" ]]; then
+      echo "Error: Animation preset '$name' not found in $ANIM_DIR" >&2
+      exit 1
+    fi
+
+    cp "$source_file" "$TARGET_FILE"
+    echo "$name" > "$STATE_FILE"
+
+    # Reload Hyprland
+    if command -v hyprctl &>/dev/null && [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
+      hyprctl reload >/dev/null 2>&1 || true
+      if [[ "$(get_reduced_motion)" == "true" ]]; then
+        hyprctl eval 'hl.config({ animations = { enabled = false } })' >/dev/null 2>&1 || true
+      fi
+    fi
+
+    # Notify user
+    label="$(human_name "$name")"
+    if command -v notify-send &>/dev/null; then
+      notify-send -a "Omarchy Motion" -i preferences-desktop-theme "Motion Engine Preset" "$label"
+    fi
+
+    # Refresh omarchy menu if available
+    if command -v omarchy-menu &>/dev/null; then
+      omarchy-menu refresh >/dev/null 2>&1 || true
+    fi
+
+    echo "Activated animation preset: $label ($name)"
+    ;;
+
+  intensity)
+    subcmd="${2:-get}"
+    case "$subcmd" in
+      get)
+        target="${3:-}"
+        current="$(get_intensity)"
+        if [[ -n "$target" ]]; then
+          [[ "$current" == "$target" ]] && exit 0 || exit 1
+        fi
+        echo "$current"
+        ;;
+      set)
+        val="${3:-balanced}"
+        case "$val" in
+          subtle|balanced|expressive)
+            echo "$val" > "$INTENSITY_FILE"
+            if command -v notify-send &>/dev/null; then
+              notify-send -a "Omarchy Motion" -i preferences-desktop-theme "Motion Intensity" "Set to: ${val^}"
+            fi
+            if command -v omarchy-menu &>/dev/null; then
+              omarchy-menu refresh >/dev/null 2>&1 || true
+            fi
+            echo "Animation intensity set to: $val"
+            ;;
+          *)
+            echo "Invalid intensity. Choose: subtle, balanced, expressive" >&2
+            exit 1
+            ;;
+        esac
+        ;;
+    esac
+    ;;
+
+  reduced-motion)
+    subcmd="${2:-get}"
+    case "$subcmd" in
+      get)
+        target="${3:-}"
+        current="$(get_reduced_motion)"
+        if [[ -n "$target" ]]; then
+          [[ "$current" == "$target" ]] && exit 0 || exit 1
+        fi
+        echo "$current"
+        ;;
+      set)
+        val="${3:-false}"
+        echo "$val" > "$REDUCED_MOTION_FILE"
+        if command -v hyprctl &>/dev/null && [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
+          if [[ "$val" == "true" ]]; then
+            hyprctl eval 'hl.config({ animations = { enabled = false } })' >/dev/null 2>&1 || true
+          else
+            hyprctl eval 'hl.config({ animations = { enabled = true } })' >/dev/null 2>&1 || true
+          fi
+        fi
+        if command -v notify-send &>/dev/null; then
+          notify-send -a "Omarchy Motion" -i preferences-desktop-theme "Reduced Motion" "Set to: $val"
+        fi
+        if command -v omarchy-menu &>/dev/null; then
+          omarchy-menu refresh >/dev/null 2>&1 || true
+        fi
+        echo "Reduced motion set to: $val"
+        ;;
+      toggle)
+        curr="$(get_reduced_motion)"
+        if [[ "$curr" == "true" ]]; then
+          echo "false" > "$REDUCED_MOTION_FILE"
+          msg="Disabled"
+          val="false"
+        else
+          echo "true" > "$REDUCED_MOTION_FILE"
+          msg="Enabled"
+          val="true"
+        fi
+        if command -v hyprctl &>/dev/null && [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
+          if [[ "$val" == "true" ]]; then
+            hyprctl eval 'hl.config({ animations = { enabled = false } })' >/dev/null 2>&1 || true
+          else
+            hyprctl eval 'hl.config({ animations = { enabled = true } })' >/dev/null 2>&1 || true
+          fi
+        fi
+        if command -v notify-send &>/dev/null; then
+          notify-send -a "Omarchy Motion" -i preferences-desktop-theme "Reduced Motion" "$msg"
+        fi
+        if command -v omarchy-menu &>/dev/null; then
+          omarchy-menu refresh >/dev/null 2>&1 || true
+        fi
+        echo "Reduced motion toggled: $msg"
+        ;;
+    esac
+    ;;
+
+  *)
+    echo "Usage: omarchy-animation-style [set <preset>|get <preset>|current|list|intensity [get|set]|reduced-motion [get|set|toggle]]"
+    exit 1
+    ;;
+esac

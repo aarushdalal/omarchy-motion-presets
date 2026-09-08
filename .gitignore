@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.o
+*.a
+
+# Caches and logs
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.cache/
+
+# Runtime state & secrets
+*.sock
+*.pid
+.env
+.env.*
+rclone.conf
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
