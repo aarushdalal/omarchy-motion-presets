@@ -6,8 +6,8 @@ hl.curve("ghostVanish", { type = "bezier", points = { { 0.35, 0.0 },  { 0.88, 0.
 hl.curve("ghostShift",  { type = "bezier", points = { { 0.1, 0.95 },  { 0.22, 1.0 } } })
 
 hl.animation({ leaf = "windows",          enabled = true, speed = 1.8, bezier = "ghostShift" })
-hl.animation({ leaf = "windowsIn",        enabled = true, speed = 1.6, bezier = "ghostSnap",   style = "fade" })
-hl.animation({ leaf = "windowsOut",       enabled = true, speed = 1.2, bezier = "ghostVanish", style = "fade" })
+hl.animation({ leaf = "windowsIn",        enabled = true, speed = 1.6, bezier = "ghostSnap",   style = "popin 100%" })
+hl.animation({ leaf = "windowsOut",       enabled = true, speed = 1.2, bezier = "ghostVanish", style = "popin 100%" })
 hl.animation({ leaf = "windowsMove",      enabled = true, speed = 1.8, bezier = "ghostShift" })
 hl.animation({ leaf = "layers",           enabled = true, speed = 1.8, bezier = "ghostShift" })
 hl.animation({ leaf = "layersIn",         enabled = true, speed = 1.6, bezier = "ghostSnap",   style = "fade" })
