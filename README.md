@@ -37,27 +37,27 @@ I did not write Omarchy, Quickshell, or Hyprland from scratch. What I contribute
 
 ## Preset Catalog
 
-| Preset | Description |
-|---|---|
-| `bloom.lua` | Gentle organic bloom with soft bounce |
-| `comic.lua` | Playful comic-book spring with overshoot |
-| `cosmic.lua` | Deep-space floaty glide |
-| `cyberpunk.lua` | Sharp neon snap with aggressive deceleration |
-| `default.lua` | Balanced Omarchy-style reference baseline |
-| `fluid.lua` | Smooth fluid motion with light inertia |
-| `ghost.lua` | Ultra-light near-invisible fade and drift |
-| `ignition.lua` | Fast launch burst with afterburn settle |
-| `jelly.lua` | Bouncy jelly spring with extended oscillation |
-| `liquid.lua` | Heavy liquid pour with slow sink |
-| `matrix.lua` | Digital cascade with precise scanline timing |
-| `morph.lua` | Organic shape morph with soft warp |
-| `orbit.lua` | Planetary arc swing with gravitational pull |
-| `parallax.lua` | Layered depth parallax with offset curves |
-| `quantum.lua` | Ultra-fast quantum blink |
-| `snap.lua` | Instant hard snap — minimal animation |
-| `snappy.lua` | Quick and clean bounce snap |
-| `tokyo.lua` | Tokyo drift — signature smooth lateral glide |
-| `unfold.lua` | Origami unfold with sequential reveal |
+| Preset | Description | Showcase |
+|---|---|---|
+| `bloom.lua` | Gentle organic bloom with soft bounce | [Play WebM](assets/showcase/showcase_animation_bloom.webm) |
+| `comic.lua` | Playful comic-book spring with overshoot | [Play WebM](assets/showcase/showcase_animation_comic.webm) |
+| `cosmic.lua` | Deep-space floaty glide | [Play WebM](assets/showcase/showcase_animation_cosmic.webm) |
+| `cyberpunk.lua` | Sharp neon snap with aggressive deceleration | [Play WebM](assets/showcase/showcase_animation_cyberpunk.webm) |
+| `default.lua` | Balanced Omarchy-style reference baseline | [Play WebM](assets/showcase/showcase_animation_default.webm) |
+| `fluid.lua` | Smooth fluid motion with light inertia | [Play WebM](assets/showcase/showcase_animation_fluid.webm) |
+| `ghost.lua` | Ultra-light near-invisible fade and drift | [Play WebM](assets/showcase/showcase_animation_ghost.webm) |
+| `ignition.lua` | Fast launch burst with afterburn settle | [Play WebM](assets/showcase/showcase_animation_ignition.webm) |
+| `jelly.lua` | Bouncy jelly spring with extended oscillation | [Play WebM](assets/showcase/showcase_animation_jelly.webm) |
+| `liquid.lua` | Heavy liquid pour with slow sink | [Play WebM](assets/showcase/showcase_animation_liquid.webm) |
+| `matrix.lua` | Digital cascade with precise scanline timing | [Play WebM](assets/showcase/showcase_animation_matrix.webm) |
+| `morph.lua` | Organic shape morph with soft warp | [Play WebM](assets/showcase/showcase_animation_morph.webm) |
+| `orbit.lua` | Planetary arc swing with gravitational pull | [Play WebM](assets/showcase/showcase_animation_orbit.webm) |
+| `parallax.lua` | Layered depth parallax with offset curves | [Play WebM](assets/showcase/showcase_animation_parallax.webm) |
+| `quantum.lua` | Ultra-fast quantum blink | [Play WebM](assets/showcase/showcase_animation_quantum.webm) |
+| `snap.lua` | Instant hard snap — minimal animation | [Play WebM](assets/showcase/showcase_animation_snap.webm) |
+| `snappy.lua` | Quick and clean bounce snap | [Play WebM](assets/showcase/showcase_animation_snappy.webm) |
+| `tokyo.lua` | Tokyo drift — signature smooth lateral glide | [Play WebM](assets/showcase/showcase_animation_tokyo.webm) |
+| `unfold.lua` | Origami unfold with sequential reveal | [Play WebM](assets/showcase/showcase_animation_unfold.webm) |
 
 ---
 
