@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# ==============================================================================
+#   Omarchy Motion Presets Showcase Launcher (Detached Background Compatible)
+# ==============================================================================
+set -euo pipefail
+
+REAL_SCRIPT="$(readlink -f "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd "$(dirname "$REAL_SCRIPT")" && pwd)"
+PYTHON_SCRIPT="$SCRIPT_DIR/record-showcase.py"
+OUTPUT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)/assets/showcase"
+
+export OMARCHY_PATH="${OMARCHY_PATH:-$HOME/.local/share/omarchy}"
+export PATH="$HOME/.local/bin:$HOME/.local/share/omarchy/bin:$PATH"
+export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-1}"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$UID}"
+export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-Hyprland}"
+
+chmod +x "$PYTHON_SCRIPT"
+mkdir -p "$OUTPUT_DIR"
+
+# Check if detached execution is requested via --detach or --bg
+DETACHED=false
+ARGS=()
+for arg in "$@"; do
+  if [[ "$arg" == "--detach" || "$arg" == "--bg" || "$arg" == "--background" ]]; then
+    DETACHED=true
+  else
+    ARGS+=("$arg")
+  fi
+done
+
+if [[ "$DETACHED" == "true" ]]; then
+  echo "=============================================================================="
+  echo " 🎬 Omarchy Motion Presets Showcase Recorder (Detached Daemon)"
+  echo " Logs: $OUTPUT_DIR/execution.log"
+  echo " Assets: $OUTPUT_DIR"
+  echo "=============================================================================="
+  echo "🚀 Spawning detached showcase daemon..."
+  
+  nohup env \
+    PATH="$PATH" \
+    WAYLAND_DISPLAY="$WAYLAND_DISPLAY" \
+    XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+    XDG_CURRENT_DESKTOP="$XDG_CURRENT_DESKTOP" \
+    OMARCHY_PATH="$OMARCHY_PATH" \
+    python3 "$PYTHON_SCRIPT" "${ARGS[@]}" </dev/null >>"$OUTPUT_DIR/execution.log" 2>&1 &
+  BG_PID=$!
+  
+  echo "✅ Showcase daemon active in background (PID: $BG_PID)."
+  echo "⏳ Starting grace period countdown. You can close this terminal now!"
+  echo "   Monitor anytime with: tail -f $OUTPUT_DIR/execution.log"
+  echo ""
+  exit 0
+else
+  # Foreground mode: Python script itself is immune to SIGHUP, so user can still close terminal!
+  exec python3 "$PYTHON_SCRIPT" "${ARGS[@]}"
+fi
