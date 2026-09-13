@@ -61,6 +61,32 @@ I did not write Omarchy, Quickshell, or Hyprland from scratch. What I contribute
 
 ---
 
+## Showcase Gallery
+
+GitHub does not render repository-hosted WebM files as inline README players. These animated previews render directly on GitHub; click any preview to open its full WebM recording.
+
+| Preset | Preview |
+|---|---|
+| `bloom` | [![bloom](assets/showcase/previews/showcase_animation_bloom.gif)](assets/showcase/showcase_animation_bloom.webm) |
+| `comic` | [![comic](assets/showcase/previews/showcase_animation_comic.gif)](assets/showcase/showcase_animation_comic.webm) |
+| `cosmic` | [![cosmic](assets/showcase/previews/showcase_animation_cosmic.gif)](assets/showcase/showcase_animation_cosmic.webm) |
+| `cyberpunk` | [![cyberpunk](assets/showcase/previews/showcase_animation_cyberpunk.gif)](assets/showcase/showcase_animation_cyberpunk.webm) |
+| `default` | [![default](assets/showcase/previews/showcase_animation_default.gif)](assets/showcase/showcase_animation_default.webm) |
+| `fluid` | [![fluid](assets/showcase/previews/showcase_animation_fluid.gif)](assets/showcase/showcase_animation_fluid.webm) |
+| `ghost` | [![ghost](assets/showcase/previews/showcase_animation_ghost.gif)](assets/showcase/showcase_animation_ghost.webm) |
+| `ignition` | [![ignition](assets/showcase/previews/showcase_animation_ignition.gif)](assets/showcase/showcase_animation_ignition.webm) |
+| `jelly` | [![jelly](assets/showcase/previews/showcase_animation_jelly.gif)](assets/showcase/showcase_animation_jelly.webm) |
+| `liquid` | [![liquid](assets/showcase/previews/showcase_animation_liquid.gif)](assets/showcase/showcase_animation_liquid.webm) |
+| `matrix` | [![matrix](assets/showcase/previews/showcase_animation_matrix.gif)](assets/showcase/showcase_animation_matrix.webm) |
+| `morph` | [![morph](assets/showcase/previews/showcase_animation_morph.gif)](assets/showcase/showcase_animation_morph.webm) |
+| `orbit` | [![orbit](assets/showcase/previews/showcase_animation_orbit.gif)](assets/showcase/showcase_animation_orbit.webm) |
+| `parallax` | [![parallax](assets/showcase/previews/showcase_animation_parallax.gif)](assets/showcase/showcase_animation_parallax.webm) |
+| `quantum` | [![quantum](assets/showcase/previews/showcase_animation_quantum.gif)](assets/showcase/showcase_animation_quantum.webm) |
+| `snap` | [![snap](assets/showcase/previews/showcase_animation_snap.gif)](assets/showcase/showcase_animation_snap.webm) |
+| `snappy` | [![snappy](assets/showcase/previews/showcase_animation_snappy.gif)](assets/showcase/showcase_animation_snappy.webm) |
+| `tokyo` | [![tokyo](assets/showcase/previews/showcase_animation_tokyo.gif)](assets/showcase/showcase_animation_tokyo.webm) |
+| `unfold` | [![unfold](assets/showcase/previews/showcase_animation_unfold.gif)](assets/showcase/showcase_animation_unfold.webm) |
+
 ## Repository Structure
 
 ```
