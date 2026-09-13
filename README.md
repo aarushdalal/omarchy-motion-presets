@@ -39,25 +39,25 @@ I did not write Omarchy, Quickshell, or Hyprland from scratch. What I contribute
 
 | Preset | Description | Showcase |
 |---|---|---|
-| `bloom.lua` | Gentle organic bloom with soft bounce | [Play WebM](assets/showcase/showcase_animation_bloom.webm) |
-| `comic.lua` | Playful comic-book spring with overshoot | [Play WebM](assets/showcase/showcase_animation_comic.webm) |
-| `cosmic.lua` | Deep-space floaty glide | [Play WebM](assets/showcase/showcase_animation_cosmic.webm) |
-| `cyberpunk.lua` | Sharp neon snap with aggressive deceleration | [Play WebM](assets/showcase/showcase_animation_cyberpunk.webm) |
-| `default.lua` | Balanced Omarchy-style reference baseline | [Play WebM](assets/showcase/showcase_animation_default.webm) |
-| `fluid.lua` | Smooth fluid motion with light inertia | [Play WebM](assets/showcase/showcase_animation_fluid.webm) |
-| `ghost.lua` | Ultra-light near-invisible fade and drift | [Play WebM](assets/showcase/showcase_animation_ghost.webm) |
-| `ignition.lua` | Fast launch burst with afterburn settle | [Play WebM](assets/showcase/showcase_animation_ignition.webm) |
-| `jelly.lua` | Bouncy jelly spring with extended oscillation | [Play WebM](assets/showcase/showcase_animation_jelly.webm) |
-| `liquid.lua` | Heavy liquid pour with slow sink | [Play WebM](assets/showcase/showcase_animation_liquid.webm) |
-| `matrix.lua` | Digital cascade with precise scanline timing | [Play WebM](assets/showcase/showcase_animation_matrix.webm) |
-| `morph.lua` | Organic shape morph with soft warp | [Play WebM](assets/showcase/showcase_animation_morph.webm) |
-| `orbit.lua` | Planetary arc swing with gravitational pull | [Play WebM](assets/showcase/showcase_animation_orbit.webm) |
-| `parallax.lua` | Layered depth parallax with offset curves | [Play WebM](assets/showcase/showcase_animation_parallax.webm) |
-| `quantum.lua` | Ultra-fast quantum blink | [Play WebM](assets/showcase/showcase_animation_quantum.webm) |
-| `snap.lua` | Instant hard snap — minimal animation | [Play WebM](assets/showcase/showcase_animation_snap.webm) |
-| `snappy.lua` | Quick and clean bounce snap | [Play WebM](assets/showcase/showcase_animation_snappy.webm) |
-| `tokyo.lua` | Tokyo drift — signature smooth lateral glide | [Play WebM](assets/showcase/showcase_animation_tokyo.webm) |
-| `unfold.lua` | Origami unfold with sequential reveal | [Play WebM](assets/showcase/showcase_animation_unfold.webm) |
+| `bloom.lua` | Gentle organic bloom with soft bounce | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_bloom.webm" type="video/webm">Bloom showcase</video> |
+| `comic.lua` | Playful comic-book spring with overshoot | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_comic.webm" type="video/webm">Comic showcase</video> |
+| `cosmic.lua` | Deep-space floaty glide | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_cosmic.webm" type="video/webm">Cosmic showcase</video> |
+| `cyberpunk.lua` | Sharp neon snap with aggressive deceleration | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_cyberpunk.webm" type="video/webm">Cyberpunk showcase</video> |
+| `default.lua` | Balanced Omarchy-style reference baseline | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_default.webm" type="video/webm">Default showcase</video> |
+| `fluid.lua` | Smooth fluid motion with light inertia | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_fluid.webm" type="video/webm">Fluid showcase</video> |
+| `ghost.lua` | Ultra-light near-invisible fade and drift | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_ghost.webm" type="video/webm">Ghost showcase</video> |
+| `ignition.lua` | Fast launch burst with afterburn settle | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_ignition.webm" type="video/webm">Ignition showcase</video> |
+| `jelly.lua` | Bouncy jelly spring with extended oscillation | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_jelly.webm" type="video/webm">Jelly showcase</video> |
+| `liquid.lua` | Heavy liquid pour with slow sink | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_liquid.webm" type="video/webm">Liquid showcase</video> |
+| `matrix.lua` | Digital cascade with precise scanline timing | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_matrix.webm" type="video/webm">Matrix showcase</video> |
+| `morph.lua` | Organic shape morph with soft warp | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_morph.webm" type="video/webm">Morph showcase</video> |
+| `orbit.lua` | Planetary arc swing with gravitational pull | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_orbit.webm" type="video/webm">Orbit showcase</video> |
+| `parallax.lua` | Layered depth parallax with offset curves | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_parallax.webm" type="video/webm">Parallax showcase</video> |
+| `quantum.lua` | Ultra-fast quantum blink | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_quantum.webm" type="video/webm">Quantum showcase</video> |
+| `snap.lua` | Instant hard snap — minimal animation | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_snap.webm" type="video/webm">Snap showcase</video> |
+| `snappy.lua` | Quick and clean bounce snap | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_snappy.webm" type="video/webm">Snappy showcase</video> |
+| `tokyo.lua` | Tokyo drift — signature smooth lateral glide | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_tokyo.webm" type="video/webm">Tokyo showcase</video> |
+| `unfold.lua` | Origami unfold with sequential reveal | <video controls preload="metadata" width="320"><source src="https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/showcase_animation_unfold.webm" type="video/webm">Unfold showcase</video> |
 
 ---
 
