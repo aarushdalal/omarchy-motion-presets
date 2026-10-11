@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Sample design preview">
+ <rect width="1200" height="700" fill="#10151b"/><rect x="52" y="34" width="1096" height="48" rx="22" fill="#202831"/>
+ <g fill="#9aa9b7" font-family="monospace" font-size="14"><text x="76" y="64">OMARCHY</text><text x="480" y="64">SAMPLE WORKSPACE</text><text x="1000" y="64">SESSION</text></g>
+ <rect x="170" y="152" width="860" height="444" rx="28" fill="#1a222d" stroke="#33414e"/>
+ <text x="214" y="216" fill="#f1f3f5" font-family="sans-serif" font-size="34" font-weight="600">Motion Presets</text>
+ <text x="214" y="258" fill="#9aa9b7" font-family="sans-serif" font-size="18">19 presets · three intensities · reduced motion</text>
+ <g fill="#263543"><rect x="214" y="306" width="224" height="142" rx="18"/><rect x="458" y="306" width="224" height="142" rx="18"/><rect x="702" y="306" width="284" height="142" rx="18"/></g>
+ <g fill="#73bda9" font-family="sans-serif" font-size="20"><text x="238" y="352">REFINED</text><text x="482" y="352">RESPONSIVE</text><text x="726" y="352">RECOVERABLE</text></g>
+ <g fill="#9aa9b7" font-family="sans-serif" font-size="15"><text x="238" y="414">Native desktop tokens</text><text x="482" y="414">Preset-aware motion</text><text x="726" y="414">Changes with recovery copies</text></g>
+ <rect x="214" y="484" width="772" height="64" rx="16" fill="#202f32"/><text x="238" y="523" fill="#b7d4cb" font-family="sans-serif" font-size="17">Sample design illustration · no live workstation data</text>
+ <text x="170" y="648" fill="#81919d" font-family="sans-serif" font-size="15">Illustrative layout; consult the source and native validation notes for implemented behavior.</text>
+</svg>

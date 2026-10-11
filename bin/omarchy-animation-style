@@ -1,228 +1,97 @@
-#!/usr/bin/env bash
-# omarchy-animation-style: Switch and manage Hyprland and Quickshell animation presets for Omarchy
-# Part of the Omarchy Signature Motion Engine
+#!/usr/bin/env python3
+"""Validated, serialized motion updates with rollback on compositor failure."""
+import fcntl
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+import tempfile
 
-set -euo pipefail
+PRESETS = 'default unfold liquid snap bloom ignition morph orbit parallax quantum cosmic tokyo ghost snappy cyberpunk fluid comic jelly matrix'.split()
+CONFIG = Path(os.environ.get('XDG_CONFIG_HOME', Path.home() / '.config')) / 'hypr'
+STATE = Path(os.environ.get('XDG_STATE_HOME', Path.home() / '.local/state')) / 'omarchy'
+FILES = {'style': STATE / 'animation-style', 'intensity': STATE / 'animation-intensity', 'reduced-motion': STATE / 'reduced-motion'}
+DEFAULTS = {'style': 'tokyo', 'intensity': 'balanced', 'reduced-motion': 'false'}
 
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/hypr"
-ANIM_DIR="$CONFIG_DIR/animations"
-STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/omarchy"
-STATE_FILE="$STATE_DIR/animation-style"
-INTENSITY_FILE="$STATE_DIR/animation-intensity"
-REDUCED_MOTION_FILE="$STATE_DIR/reduced-motion"
-TARGET_FILE="$CONFIG_DIR/animations.lua"
+def current(key):
+    try:
+        value = FILES[key].read_text().strip()
+        allowed = PRESETS if key == 'style' else ['subtle', 'balanced', 'expressive'] if key == 'intensity' else ['true', 'false']
+        return value if value in allowed else DEFAULTS[key]
+    except FileNotFoundError:
+        return DEFAULTS[key]
 
-mkdir -p "$ANIM_DIR" "$STATE_DIR"
+def atomic(path, data, mode=0o600):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, name = tempfile.mkstemp(prefix='.' + path.name + '-', dir=path.parent)
+    try:
+        with os.fdopen(fd, 'wb') as stream:
+            stream.write(data); stream.flush(); os.fsync(stream.fileno())
+        os.chmod(name, mode)
+        os.replace(name, path)
+    finally:
+        Path(name).unlink(missing_ok=True)
 
-get_current() {
-  if [[ -f "$STATE_FILE" ]]; then
-    cat "$STATE_FILE"
-  else
-    echo "tokyo"
-  fi
-}
+def reload():
+    if not os.environ.get('HYPRLAND_INSTANCE_SIGNATURE'): return
+    subprocess.run(['hyprctl', 'reload'], capture_output=True, check=True, timeout=10)
+    result = subprocess.run(['hyprctl', 'configerrors'], capture_output=True, text=True, check=True, timeout=10)
+    if result.stdout.strip() not in ('', 'ok'):
+        raise RuntimeError('Compositor reported a configuration error; previous motion restored.')
 
-get_intensity() {
-  if [[ -f "$INTENSITY_FILE" ]]; then
-    cat "$INTENSITY_FILE"
-  else
-    echo "balanced"
-  fi
-}
+def update(key, value):
+    STATE.mkdir(parents=True, exist_ok=True)
+    with (STATE / '.motion-update.lock').open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        values = {k: current(k) for k in FILES}; values[key] = value
+        source = CONFIG / 'animations' / (values['style'] + '.lua')
+        if not source.is_file(): raise ValueError('Selected preset is not installed.')
+        payload = source.read_text()
+        if 'hl.animation(' not in payload: raise ValueError('Preset has no animation declarations.')
+        multiplier = {'subtle': 0.8, 'balanced': 1, 'expressive': 1.25}[values['intensity']]
+        payload = re.sub(r'\bspeed\s*=\s*(\d+(?:\.\d+)?)', lambda m: 'speed = ' + str(round(float(m[1]) * multiplier, 3)), payload)
+        payload += '\n-- Persist accessibility mode across compositor reloads.\nhl.config({ animations = { enabled = ' + ('false' if values['reduced-motion'] == 'true' else 'true') + ' } })\n'
+        target = CONFIG / 'animations.lua'; paths = [target, FILES[key]]
+        before = {p: (p.read_bytes(), p.stat().st_mode & 0o777) if p.exists() else None for p in paths}
+        try:
+            atomic(target, payload.encode(), before[target][1] if before[target] else 0o644)
+            reload()
+            atomic(FILES[key], (value + '\n').encode())
+        except Exception:
+            for path, original in before.items():
+                if original is None: path.unlink(missing_ok=True)
+                else: atomic(path, *original)
+            try: reload()
+            except Exception: pass
+            raise
+        print('Motion updated:', key, value)
 
-get_reduced_motion() {
-  if [[ -f "$REDUCED_MOTION_FILE" ]]; then
-    cat "$REDUCED_MOTION_FILE"
-  else
-    echo "false"
-  fi
-}
+def main(args):
+    dry_run = '--dry-run' in args; args = [x for x in args if x != '--dry-run']
+    cmd = args[0] if args else 'current'
+    if cmd == 'list': print('\n'.join(PRESETS)); return
+    key = cmd if cmd in ('intensity', 'reduced-motion') else 'style'
+    sub = args[1] if key != 'style' and len(args) > 1 else cmd if key == 'style' else 'get'
+    if sub in ('current', 'get'):
+        expected = args[2] if key != 'style' and len(args) > 2 else args[1] if key == 'style' and len(args) > 1 else None
+        if expected is not None: return 0 if current(key) == expected else 1
+        print(current(key)); return
+    if sub == 'toggle' and key == 'reduced-motion': value = 'false' if current(key) == 'true' else 'true'
+    elif sub == 'set':
+        idx = 1 if key == 'style' else 2
+        if len(args) <= idx: raise ValueError('A motion value is required.')
+        value = args[idx]
+    else: raise ValueError('Use current, list, set PRESET, intensity get/set or reduced-motion get/set/toggle.')
+    allowed = PRESETS if key == 'style' else ['subtle', 'balanced', 'expressive'] if key == 'intensity' else ['true', 'false']
+    if value not in allowed: raise ValueError('Invalid motion value.')
+    if dry_run:
+        source = CONFIG / 'animations' / ((value if key == 'style' else current('style')) + '.lua')
+        if not source.is_file(): raise ValueError('Selected preset is not installed.')
+        print('Validated motion update:', key, value)
+    else: update(key, value)
 
-human_name() {
-  case "$1" in
-    # Signatures
-    unfold)     echo "Material Unfold (Signature Surface Reveal)" ;;
-    liquid)     echo "Liquid Selection (Signature Morphing Tension)" ;;
-    snap)       echo "Spatial Snap (Signature Directional Anchor)" ;;
-    bloom)      echo "Context Bloom (Signature Layered Growth)" ;;
-    ignition)   echo "Command Ignition (Signature Kinetic Energy)" ;;
-    morph)      echo "Theme Morph (Signature Cinematic Transition)" ;;
-    orbit)      echo "Orbit Reveal (Secondary Radial Float)" ;;
-    parallax)   echo "Workspace Parallax (Multi-Depth Perspective)" ;;
-
-    # Classic & High-Physics Presets
-    quantum)    echo "Quantum Snap (Ultra-Fast & Magnetic)" ;;
-    cosmic)     echo "Cosmic Glide (Apple Spring & Silk)" ;;
-    tokyo)      echo "Tokyo Drift (Kinetic Velocity)" ;;
-    ghost)      echo "Velocity Ghost (Hyperspeed Hologram)" ;;
-    snappy)     echo "Fast & Snappy 144Hz" ;;
-    cyberpunk)  echo "Cyberpunk Warp 3D" ;;
-    fluid)      echo "Fluid Glass & Silk" ;;
-    comic)      echo "Comic Flip & Gravity" ;;
-    jelly)      echo "Bouncy Jelly & Arcade" ;;
-    matrix)     echo "Matrix Digital Elevator" ;;
-    default)    echo "Classic Default" ;;
-    *)          echo "$1" ;;
-  esac
-}
-
-cmd="${1:-current}"
-
-case "$cmd" in
-  get)
-    if [[ $# -lt 2 ]]; then
-      get_current
-    else
-      target="${2:-}"
-      current="$(get_current)"
-      if [[ "$current" == "$target" ]]; then
-        exit 0
-      else
-        exit 1
-      fi
-    fi
-    ;;
-
-  current)
-    get_current
-    ;;
-
-  list)
-    for f in "$ANIM_DIR"/*.lua; do
-      if [[ -f "$f" ]]; then
-        b="$(basename "$f" .lua)"
-        echo "$b - $(human_name "$b")"
-      fi
-    done
-    ;;
-
-  set)
-    name="${2:-tokyo}"
-    source_file="$ANIM_DIR/$name.lua"
-
-    if [[ ! -f "$source_file" ]]; then
-      echo "Error: Animation preset '$name' not found in $ANIM_DIR" >&2
-      exit 1
-    fi
-
-    cp "$source_file" "$TARGET_FILE"
-    echo "$name" > "$STATE_FILE"
-
-    # Reload Hyprland
-    if command -v hyprctl &>/dev/null && [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
-      hyprctl reload >/dev/null 2>&1 || true
-      if [[ "$(get_reduced_motion)" == "true" ]]; then
-        hyprctl eval 'hl.config({ animations = { enabled = false } })' >/dev/null 2>&1 || true
-      fi
-    fi
-
-    # Notify user
-    label="$(human_name "$name")"
-    if command -v notify-send &>/dev/null; then
-      notify-send -a "Omarchy Motion" -i preferences-desktop-theme "Motion Engine Preset" "$label"
-    fi
-
-    # Refresh omarchy menu if available
-    if command -v omarchy-menu &>/dev/null; then
-      omarchy-menu refresh >/dev/null 2>&1 || true
-    fi
-
-    echo "Activated animation preset: $label ($name)"
-    ;;
-
-  intensity)
-    subcmd="${2:-get}"
-    case "$subcmd" in
-      get)
-        target="${3:-}"
-        current="$(get_intensity)"
-        if [[ -n "$target" ]]; then
-          [[ "$current" == "$target" ]] && exit 0 || exit 1
-        fi
-        echo "$current"
-        ;;
-      set)
-        val="${3:-balanced}"
-        case "$val" in
-          subtle|balanced|expressive)
-            echo "$val" > "$INTENSITY_FILE"
-            if command -v notify-send &>/dev/null; then
-              notify-send -a "Omarchy Motion" -i preferences-desktop-theme "Motion Intensity" "Set to: ${val^}"
-            fi
-            if command -v omarchy-menu &>/dev/null; then
-              omarchy-menu refresh >/dev/null 2>&1 || true
-            fi
-            echo "Animation intensity set to: $val"
-            ;;
-          *)
-            echo "Invalid intensity. Choose: subtle, balanced, expressive" >&2
-            exit 1
-            ;;
-        esac
-        ;;
-    esac
-    ;;
-
-  reduced-motion)
-    subcmd="${2:-get}"
-    case "$subcmd" in
-      get)
-        target="${3:-}"
-        current="$(get_reduced_motion)"
-        if [[ -n "$target" ]]; then
-          [[ "$current" == "$target" ]] && exit 0 || exit 1
-        fi
-        echo "$current"
-        ;;
-      set)
-        val="${3:-false}"
-        echo "$val" > "$REDUCED_MOTION_FILE"
-        if command -v hyprctl &>/dev/null && [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
-          if [[ "$val" == "true" ]]; then
-            hyprctl eval 'hl.config({ animations = { enabled = false } })' >/dev/null 2>&1 || true
-          else
-            hyprctl eval 'hl.config({ animations = { enabled = true } })' >/dev/null 2>&1 || true
-          fi
-        fi
-        if command -v notify-send &>/dev/null; then
-          notify-send -a "Omarchy Motion" -i preferences-desktop-theme "Reduced Motion" "Set to: $val"
-        fi
-        if command -v omarchy-menu &>/dev/null; then
-          omarchy-menu refresh >/dev/null 2>&1 || true
-        fi
-        echo "Reduced motion set to: $val"
-        ;;
-      toggle)
-        curr="$(get_reduced_motion)"
-        if [[ "$curr" == "true" ]]; then
-          echo "false" > "$REDUCED_MOTION_FILE"
-          msg="Disabled"
-          val="false"
-        else
-          echo "true" > "$REDUCED_MOTION_FILE"
-          msg="Enabled"
-          val="true"
-        fi
-        if command -v hyprctl &>/dev/null && [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
-          if [[ "$val" == "true" ]]; then
-            hyprctl eval 'hl.config({ animations = { enabled = false } })' >/dev/null 2>&1 || true
-          else
-            hyprctl eval 'hl.config({ animations = { enabled = true } })' >/dev/null 2>&1 || true
-          fi
-        fi
-        if command -v notify-send &>/dev/null; then
-          notify-send -a "Omarchy Motion" -i preferences-desktop-theme "Reduced Motion" "$msg"
-        fi
-        if command -v omarchy-menu &>/dev/null; then
-          omarchy-menu refresh >/dev/null 2>&1 || true
-        fi
-        echo "Reduced motion toggled: $msg"
-        ;;
-    esac
-    ;;
-
-  *)
-    echo "Usage: omarchy-animation-style [set <preset>|get <preset>|current|list|intensity [get|set]|reduced-motion [get|set|toggle]]"
-    exit 1
-    ;;
-esac
+if __name__ == '__main__':
+    try: sys.exit(main(sys.argv[1:]))
+    except (ValueError, OSError, RuntimeError, subprocess.SubprocessError) as error:
+        print(str(error), file=sys.stderr); sys.exit(1)
