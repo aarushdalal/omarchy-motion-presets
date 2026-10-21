@@ -39,53 +39,53 @@ I did not write Omarchy, Quickshell, or Hyprland from scratch. What I contribute
 
 | Preset | Description | Showcase |
 |---|---|---|
-| `bloom.lua` | Gentle organic bloom with soft bounce | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/bloom.mp4) |
-| `comic.lua` | Playful comic-book spring with overshoot | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/comic.mp4) |
-| `cosmic.lua` | Deep-space floaty glide | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/cosmic.mp4) |
-| `cyberpunk.lua` | Sharp neon snap with aggressive deceleration | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/cyberpunk.mp4) |
-| `default.lua` | Balanced Omarchy-style reference baseline | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/default.mp4) |
-| `fluid.lua` | Smooth fluid motion with light inertia | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/fluid.mp4) |
-| `ghost.lua` | Ultra-light near-invisible fade and drift | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/ghost.mp4) |
-| `ignition.lua` | Fast launch burst with afterburn settle | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/ignition.mp4) |
-| `jelly.lua` | Bouncy jelly spring with extended oscillation | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/jelly.mp4) |
-| `liquid.lua` | Heavy liquid pour with slow sink | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/liquid.mp4) |
-| `matrix.lua` | Digital cascade with precise scanline timing | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/matrix.mp4) |
-| `morph.lua` | Organic shape morph with soft warp | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/morph.mp4) |
-| `orbit.lua` | Planetary arc swing with gravitational pull | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/orbit.mp4) |
-| `parallax.lua` | Layered depth parallax with offset curves | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/parallax.mp4) |
-| `quantum.lua` | Ultra-fast quantum blink | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/quantum.mp4) |
-| `snap.lua` | Instant hard snap — minimal animation | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/snap.mp4) |
-| `snappy.lua` | Quick and clean bounce snap | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/snappy.mp4) |
-| `tokyo.lua` | Tokyo drift — signature smooth lateral glide | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/tokyo.mp4) |
-| `unfold.lua` | Origami unfold with sequential reveal | [Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/unfold.mp4) |
+| `bloom.lua` | Gentle organic bloom with soft bounce | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#bloom) |
+| `comic.lua` | Playful comic-book spring with overshoot | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#comic) |
+| `cosmic.lua` | Deep-space floaty glide | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#cosmic) |
+| `cyberpunk.lua` | Sharp neon snap with aggressive deceleration | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#cyberpunk) |
+| `default.lua` | Balanced Omarchy-style reference baseline | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#default) |
+| `fluid.lua` | Smooth fluid motion with light inertia | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#fluid) |
+| `ghost.lua` | Ultra-light near-invisible fade and drift | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#ghost) |
+| `ignition.lua` | Fast launch burst with afterburn settle | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#ignition) |
+| `jelly.lua` | Bouncy jelly spring with extended oscillation | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#jelly) |
+| `liquid.lua` | Heavy liquid pour with slow sink | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#liquid) |
+| `matrix.lua` | Digital cascade with precise scanline timing | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#matrix) |
+| `morph.lua` | Organic shape morph with soft warp | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#morph) |
+| `orbit.lua` | Planetary arc swing with gravitational pull | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#orbit) |
+| `parallax.lua` | Layered depth parallax with offset curves | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#parallax) |
+| `quantum.lua` | Ultra-fast quantum blink | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#quantum) |
+| `snap.lua` | Instant hard snap — minimal animation | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#snap) |
+| `snappy.lua` | Quick and clean bounce snap | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#snappy) |
+| `tokyo.lua` | Tokyo drift — signature smooth lateral glide | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#tokyo) |
+| `unfold.lua` | Origami unfold with sequential reveal | [Video](https://aarushdalal.github.io/omarchy-motion-presets/#unfold) |
 
 ---
 
 ## Showcase Gallery
 
-19 recorded animation presets with animated previews. Click a preview or **Video** to open the full silent MP4 recording.
+19 recorded animation presets with animated previews. Click a preview or **Video** to open its browser video player.
 
 | Preset | Animated preview |
 |---|---|
-| `bloom` | [![Bloom preview](assets/showcase/previews/bloom.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/bloom.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/bloom.mp4) |
-| `comic` | [![Comic preview](assets/showcase/previews/comic.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/comic.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/comic.mp4) |
-| `cosmic` | [![Cosmic preview](assets/showcase/previews/cosmic.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/cosmic.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/cosmic.mp4) |
-| `cyberpunk` | [![Cyberpunk preview](assets/showcase/previews/cyberpunk.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/cyberpunk.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/cyberpunk.mp4) |
-| `default` | [![Default preview](assets/showcase/previews/default.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/default.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/default.mp4) |
-| `fluid` | [![Fluid preview](assets/showcase/previews/fluid.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/fluid.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/fluid.mp4) |
-| `ghost` | [![Ghost preview](assets/showcase/previews/ghost.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/ghost.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/ghost.mp4) |
-| `ignition` | [![Ignition preview](assets/showcase/previews/ignition.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/ignition.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/ignition.mp4) |
-| `jelly` | [![Jelly preview](assets/showcase/previews/jelly.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/jelly.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/jelly.mp4) |
-| `liquid` | [![Liquid preview](assets/showcase/previews/liquid.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/liquid.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/liquid.mp4) |
-| `matrix` | [![Matrix preview](assets/showcase/previews/matrix.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/matrix.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/matrix.mp4) |
-| `morph` | [![Morph preview](assets/showcase/previews/morph.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/morph.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/morph.mp4) |
-| `orbit` | [![Orbit preview](assets/showcase/previews/orbit.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/orbit.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/orbit.mp4) |
-| `parallax` | [![Parallax preview](assets/showcase/previews/parallax.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/parallax.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/parallax.mp4) |
-| `quantum` | [![Quantum preview](assets/showcase/previews/quantum.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/quantum.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/quantum.mp4) |
-| `snap` | [![Snap preview](assets/showcase/previews/snap.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/snap.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/snap.mp4) |
-| `snappy` | [![Snappy preview](assets/showcase/previews/snappy.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/snappy.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/snappy.mp4) |
-| `tokyo` | [![Tokyo preview](assets/showcase/previews/tokyo.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/tokyo.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/tokyo.mp4) |
-| `unfold` | [![Unfold preview](assets/showcase/previews/unfold.gif)](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/unfold.mp4)<br>[Video](https://raw.githubusercontent.com/aarushdalal/omarchy-motion-presets/main/assets/showcase/unfold.mp4) |
+| `bloom` | [![Bloom preview](assets/showcase/previews/bloom.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#bloom)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#bloom) |
+| `comic` | [![Comic preview](assets/showcase/previews/comic.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#comic)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#comic) |
+| `cosmic` | [![Cosmic preview](assets/showcase/previews/cosmic.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#cosmic)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#cosmic) |
+| `cyberpunk` | [![Cyberpunk preview](assets/showcase/previews/cyberpunk.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#cyberpunk)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#cyberpunk) |
+| `default` | [![Default preview](assets/showcase/previews/default.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#default)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#default) |
+| `fluid` | [![Fluid preview](assets/showcase/previews/fluid.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#fluid)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#fluid) |
+| `ghost` | [![Ghost preview](assets/showcase/previews/ghost.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#ghost)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#ghost) |
+| `ignition` | [![Ignition preview](assets/showcase/previews/ignition.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#ignition)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#ignition) |
+| `jelly` | [![Jelly preview](assets/showcase/previews/jelly.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#jelly)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#jelly) |
+| `liquid` | [![Liquid preview](assets/showcase/previews/liquid.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#liquid)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#liquid) |
+| `matrix` | [![Matrix preview](assets/showcase/previews/matrix.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#matrix)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#matrix) |
+| `morph` | [![Morph preview](assets/showcase/previews/morph.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#morph)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#morph) |
+| `orbit` | [![Orbit preview](assets/showcase/previews/orbit.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#orbit)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#orbit) |
+| `parallax` | [![Parallax preview](assets/showcase/previews/parallax.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#parallax)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#parallax) |
+| `quantum` | [![Quantum preview](assets/showcase/previews/quantum.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#quantum)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#quantum) |
+| `snap` | [![Snap preview](assets/showcase/previews/snap.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#snap)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#snap) |
+| `snappy` | [![Snappy preview](assets/showcase/previews/snappy.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#snappy)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#snappy) |
+| `tokyo` | [![Tokyo preview](assets/showcase/previews/tokyo.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#tokyo)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#tokyo) |
+| `unfold` | [![Unfold preview](assets/showcase/previews/unfold.gif)](https://aarushdalal.github.io/omarchy-motion-presets/#unfold)<br>[Video](https://aarushdalal.github.io/omarchy-motion-presets/#unfold) |
 
 Recordings are historical demonstrations of the project. The desktop status bar is cropped from the motion recordings. Audio and source metadata are removed. See [showcase details](docs/SHOWCASE.md).
 

@@ -7,7 +7,7 @@ The gallery contains 19 historical recordings of Motion Presets, restored from t
 - `assets/showcase/previews/<name>.jpg`: still poster for the optional HTML gallery.
 - `index.html`: video gallery with explicit playback controls and no autoplay.
 
-The README uses repository-relative GIF images and direct MP4 links. It does not require GitHub Pages. The HTML gallery works when served from the repository root by any static web server.
+The README uses repository-relative GIF images and links to matching players in the GitHub Pages gallery. The videos are also available as MP4 downloads in the repository. The HTML gallery works when served from the repository root by any static web server.
 
 Audio streams and source metadata are removed. The desktop status bar is cropped from the motion clips. The original local recordings remain unchanged.
 
